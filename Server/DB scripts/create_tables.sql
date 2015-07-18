@@ -37,6 +37,7 @@ CREATE TABLE Posts
 	content VARCHAR(144),
 	categoryId int,
 	postTime datetime,
+	active boolean,
 	FOREIGN KEY (userId) REFERENCES Users(id),
 	FOREIGN KEY (categoryId) REFERENCES Category(id)
 	
@@ -51,6 +52,7 @@ CREATE TABLE Comments
 	content VARCHAR(144),
 	postId int,
 	commentTime datetime,
+	active boolean,
 	FOREIGN KEY (userId) REFERENCES Users(id),
 	FOREIGN KEY (postId) REFERENCES Posts(id)
 );
