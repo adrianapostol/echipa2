@@ -30,7 +30,10 @@
     self.tableView.estimatedRowHeight = 44;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    self.comments = [[self class] createComments];
+}
+
+- (void)setComments:(NSArray *)comments {
+    _comments = comments;
     [self.tableView reloadData];
 }
 
@@ -51,15 +54,6 @@
     return cell;
 }
 
-+ (NSArray *)createComments {
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:20];
-    
-    for (int idx = 0; idx < 20; idx++) {
-        [array addObject:[[Comment alloc] initWithID:@"ID" text:@"This is the best comment ever. You can't write one better." user:@"iCeq"]];
-    }
-    
-    return array;
-}
 @end
 
 @implementation CommentTableViewCell

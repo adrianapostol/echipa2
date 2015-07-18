@@ -7,6 +7,7 @@
 //
 
 #import "RegisterViewController.h"
+#import "AppSession.h"
 
 static NSString * const ShowDashboardSegueIdentifier = @"ShowDashboard";
 
@@ -37,7 +38,11 @@ static NSString * const ShowDashboardSegueIdentifier = @"ShowDashboard";
 - (IBAction)registerButtonTapped:(id)sender {
     __weak typeof(self) weakSelf = self;
     [self registerUser:^(BOOL successful) {
-        [weakSelf showDashboard];
+        if (successful) {
+            [weakSelf showDashboard];
+        } else {
+            [weakSelf showError];
+        }
     }];
     
 }
@@ -52,13 +57,21 @@ static NSString * const ShowDashboardSegueIdentifier = @"ShowDashboard";
 }
 
 - (void)registerUser:( void (^) (BOOL successful))completion {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (completion) completion(YES);
-    });
+    [[AppSession defaultSession] registerUser:self.nameField.text password:self.passwordField.text completion:^(BOOL success) {
+        if (completion) completion(success);
+    }];
 }
 
 - (void)showDashboard {
     [self performSegueWithIdentifier:ShowDashboardSegueIdentifier sender:self];
+}
+
+- (void)showError {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Register Failed" message:@"We could not create an account. Please try again" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+    [controller addAction:action];
+    
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 @end

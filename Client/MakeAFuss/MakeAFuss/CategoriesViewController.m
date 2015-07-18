@@ -7,6 +7,7 @@
 //
 
 #import "CategoriesViewController.h"
+#import "AppSession.h"
 
 @interface CategoriesTableViewCell : UITableViewCell
 
@@ -67,7 +68,8 @@
 
 - (void)loadCategories:(void (^)(NSArray *categories)) completion {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSArray *categories = @[ @"Hot Summer Time",
+        NSArray *categories = @[ @"All",
+                                 @"Hot Summer Time",
                                  @"The Godfathers",
                                  @"Client Browser",
                                  @"Brothers in Arms",
@@ -76,6 +78,9 @@
                                  @"Life is Good"];
         if (completion) completion(categories);
     });
+//    [[AppSession defaultSession] fetchCategories:^(NSArray *categories) {
+//        completion(categories);
+//    }];
 }
 
 @end

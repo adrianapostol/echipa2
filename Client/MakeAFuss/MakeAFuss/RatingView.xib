@@ -14,7 +14,7 @@
                     <rect key="frame" x="20" y="204" width="280" height="160"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qx2-UF-yPd" userLabel="rate">
-                            <rect key="frame" x="64" y="34" width="152" height="32"/>
+                            <rect key="frame" x="76" y="34" width="128" height="32"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OdK-J9-WcC" customClass="EDStarRating">
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="32"/>
@@ -24,8 +24,8 @@
                                         <constraint firstAttribute="width" constant="120" id="yie-Qs-qaZ"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOR-u3-9k2">
-                                    <rect key="frame" x="128" y="6" width="24" height="21"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOR-u3-9k2">
+                                    <rect key="frame" x="128" y="17" width="0.0" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>

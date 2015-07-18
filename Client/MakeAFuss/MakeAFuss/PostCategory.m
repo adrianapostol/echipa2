@@ -10,4 +10,17 @@
 
 @implementation PostCategory
 
+- (instancetype)initWithID:(NSString *)categoryId name:(NSString *)name {
+    self = [self init];
+    if (self) {
+        _categoryID = categoryId;
+        _categoryName = name;
+    }
+    return self;
+}
+
++ (instancetype)categoryWithDictionary:(NSDictionary *)dictionary {
+    return [[PostCategory alloc] initWithID:dictionary[@"ID"] name:dictionary[@"name"]];
+}
+
 @end

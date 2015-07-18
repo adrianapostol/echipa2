@@ -11,6 +11,7 @@
 		CD6179741B5AA41100D62609 /* LLKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6179731B5AA41100D62609 /* LLKeyboardView.m */; };
 		CD6179781B5AA66C00D62609 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6179771B5AA66C00D62609 /* RatingView.m */; };
 		CD61797A1B5AA68F00D62609 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6179791B5AA68F00D62609 /* RatingView.xib */; };
+		CD61797D1B5AAE8E00D62609 /* AppSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CD61797C1B5AAE8E00D62609 /* AppSession.m */; };
 		CD80FFF41B5A9CA300AE1DEC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = CD80FFF31B5A9CA300AE1DEC /* Comment.m */; };
 		CD80FFF71B5AA1B500AE1DEC /* StoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD80FFF61B5AA1B500AE1DEC /* StoryDetailViewController.m */; };
 		CDE53FAF1B5A4C7A0024A22F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FAE1B5A4C7A0024A22F /* main.m */; };
@@ -48,6 +49,8 @@
 		CD6179761B5AA66C00D62609 /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
 		CD6179771B5AA66C00D62609 /* RatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingView.m; sourceTree = "<group>"; };
 		CD6179791B5AA68F00D62609 /* RatingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
+		CD61797B1B5AAE8E00D62609 /* AppSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSession.h; sourceTree = "<group>"; };
+		CD61797C1B5AAE8E00D62609 /* AppSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSession.m; sourceTree = "<group>"; };
 		CD80FFF21B5A9CA300AE1DEC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		CD80FFF31B5A9CA300AE1DEC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		CD80FFF51B5AA1B500AE1DEC /* StoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryDetailViewController.h; sourceTree = "<group>"; };
@@ -236,6 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				CDE53FED1B5A80B70024A22F /* Models */,
+				CD61797B1B5AAE8E00D62609 /* AppSession.h */,
+				CD61797C1B5AAE8E00D62609 /* AppSession.m */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 				CD80FFF41B5A9CA300AE1DEC /* Comment.m in Sources */,
 				CDE53FF31B5A81540024A22F /* Post.m in Sources */,
 				CD80FFF71B5AA1B500AE1DEC /* StoryDetailViewController.m in Sources */,
+				CD61797D1B5AAE8E00D62609 /* AppSession.m in Sources */,
 				CD6179741B5AA41100D62609 /* LLKeyboardView.m in Sources */,
 				CDE53FEA1B5A6CD60024A22F /* CommentsViewController.m in Sources */,
 				CDE53FE11B5A6C730024A22F /* StoriesTableViewController.m in Sources */,

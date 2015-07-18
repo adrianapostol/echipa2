@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "AppSession.h"
 
 static NSString * const ShowDashboardSegueIdentifier = @"ShowDashboard";
 
@@ -38,7 +39,12 @@ static NSString * const ShowDashboardSegueIdentifier = @"ShowDashboard";
 - (IBAction)loginButtonTapped:(id)sender {
     __weak typeof(self) weakSelf = self;
     [self login:^(BOOL successful) {
-        [weakSelf showDashboard];
+        if (successful) {
+            [weakSelf showDashboard];
+        } else {
+            [weakSelf showError];
+        }
+        
     }];
 }
 
@@ -50,13 +56,21 @@ static NSString * const ShowDashboardSegueIdentifier = @"ShowDashboard";
 }
 
 - (void)login:( void (^) (BOOL successful))completion {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    [[AppSession defaultSession] loginUser:self.nameField.text password:self.passwordField.text completion:^(BOOL success) {
         if (completion) completion(YES);
-    });
+    }];
 }
 
 - (void)showDashboard {
     [self performSegueWithIdentifier:ShowDashboardSegueIdentifier sender:self];
+}
+
+- (void)showError {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Login Failed" message:@"The username or password may be incorrect. Please try again" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+    [controller addAction:action];
+    
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 @end

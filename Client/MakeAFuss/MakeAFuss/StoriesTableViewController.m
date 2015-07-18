@@ -10,6 +10,7 @@
 #import "Post.h"
 #import "EDStarRating.h"
 #import "StoryDetailViewController.h"
+#import "AppSession.h"
 
 @interface PostTableViewCell : UITableViewCell
 
@@ -35,20 +36,20 @@ static NSString * const ShowStoryDetail = @"ShowStoryDetail";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.posts = [[self class] createPosts];
     self.tableView.estimatedRowHeight = 80;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    [self.tableView reloadData];
+    
+    [self loadPosts];
 }
 
 #pragma mark - Public
 
 - (void)updateStoriesForChannelType:(StoryChannelType)channelType {
-    
+    [self loadPosts];
 }
 
 - (void)updateStoriesForQuery:(NSString *)query {
-    
+    [self loadPosts];
 }
 
 #pragma mark - UITableViewDataSource
@@ -83,14 +84,12 @@ static NSString * const ShowStoryDetail = @"ShowStoryDetail";
         [segue.destinationViewController setPost:self.posts[self.tableView.indexPathForSelectedRow.row]];
 }
 
-+ (NSArray *)createPosts {
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:20];
-
-    for (int idx = 0; idx < 20; idx++) {
-        [array addObject:[[Post alloc] initWithPostID:@"1" title:@"Hackthon" content:@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris" category:@"Other" date:[NSDate date] active:YES rating:5.0 user:@"iCeq"]];
-    }
-    
-    return array;
+- (void)loadPosts {
+    __weak typeof(self) weakSelf = self;
+    [[AppSession defaultSession] fetchPostsWithParams:nil completion:^(NSArray *posts) {
+        weakSelf.posts = posts;
+        [weakSelf.tableView reloadData];
+    }];
 }
 
 @end
@@ -105,7 +104,7 @@ static NSString * const ShowStoryDetail = @"ShowStoryDetail";
     self.starRatingView.maxRating = 5.0;
     self.starRatingView.horizontalMargin = 8;
     self.starRatingView.displayMode = EDStarRatingDisplayAccurate;
-    self.starRatingView.editable = YES;
+    self.starRatingView.editable = NO;
 }
 
 @end

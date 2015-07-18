@@ -21,7 +21,8 @@
         _category = category;
         _date = date;
         _active = active;
-        _rating = rating;
+//        _rating = rating;
+        _rating = arc4random() % 6;
         _user = user;
     }
     return self;
@@ -41,7 +42,7 @@
                                    date:postDate
                                  active:[dictionary[@"active"] boolValue]
                                  rating:[dictionary[@"rating"] doubleValue]
-                                   user:dictionary[@"user"]];
+                                   user:dictionary[@"username"]];
 }
 
 @end
