@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class Post;
-@interface StoryDetailViewController : UIViewController
+@interface CommentsViewController : UITableViewController
 
-@property (nonatomic, strong) Post *post;
+@property (nonatomic, strong) NSArray *comments;
 
 @end

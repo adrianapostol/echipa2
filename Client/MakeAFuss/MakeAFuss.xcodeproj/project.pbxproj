@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		80E6EE35E588B4F9B4A253A4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED90329FE7D14E68C97EE44D /* libPods.a */; };
-		CD80FFF11B5A90E100AE1DEC /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD80FFF01B5A90E100AE1DEC /* RateView.m */; };
+		CD6179741B5AA41100D62609 /* LLKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6179731B5AA41100D62609 /* LLKeyboardView.m */; };
+		CD6179781B5AA66C00D62609 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6179771B5AA66C00D62609 /* RatingView.m */; };
+		CD61797A1B5AA68F00D62609 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6179791B5AA68F00D62609 /* RatingView.xib */; };
+		CD80FFF41B5A9CA300AE1DEC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = CD80FFF31B5A9CA300AE1DEC /* Comment.m */; };
+		CD80FFF71B5AA1B500AE1DEC /* StoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD80FFF61B5AA1B500AE1DEC /* StoryDetailViewController.m */; };
 		CDE53FAF1B5A4C7A0024A22F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FAE1B5A4C7A0024A22F /* main.m */; };
 		CDE53FB21B5A4C7A0024A22F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FB11B5A4C7A0024A22F /* AppDelegate.m */; };
 		CDE53FB81B5A4C7A0024A22F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDE53FB61B5A4C7A0024A22F /* Main.storyboard */; };
@@ -21,7 +25,7 @@
 		CDE53FE11B5A6C730024A22F /* StoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FE01B5A6C730024A22F /* StoriesTableViewController.m */; };
 		CDE53FE41B5A6C870024A22F /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FE31B5A6C870024A22F /* CategoriesViewController.m */; };
 		CDE53FE71B5A6C9F0024A22F /* CreateStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FE61B5A6C9F0024A22F /* CreateStoryViewController.m */; };
-		CDE53FEA1B5A6CD60024A22F /* StoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FE91B5A6CD60024A22F /* StoryDetailViewController.m */; };
+		CDE53FEA1B5A6CD60024A22F /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FE91B5A6CD60024A22F /* CommentsViewController.m */; };
 		CDE53FF01B5A80C70024A22F /* PostCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FEF1B5A80C70024A22F /* PostCategory.m */; };
 		CDE53FF31B5A81540024A22F /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FF21B5A81540024A22F /* Post.m */; };
 /* End PBXBuildFile section */
@@ -39,8 +43,15 @@
 /* Begin PBXFileReference section */
 		A9BFC9165A9902FE4BE4AF90 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A9EAF05A09FCC94C494ADEB7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		CD80FFEF1B5A90E100AE1DEC /* RateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
-		CD80FFF01B5A90E100AE1DEC /* RateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
+		CD6179721B5AA41100D62609 /* LLKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLKeyboardView.h; sourceTree = "<group>"; };
+		CD6179731B5AA41100D62609 /* LLKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLKeyboardView.m; sourceTree = "<group>"; };
+		CD6179761B5AA66C00D62609 /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
+		CD6179771B5AA66C00D62609 /* RatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingView.m; sourceTree = "<group>"; };
+		CD6179791B5AA68F00D62609 /* RatingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
+		CD80FFF21B5A9CA300AE1DEC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		CD80FFF31B5A9CA300AE1DEC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		CD80FFF51B5AA1B500AE1DEC /* StoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryDetailViewController.h; sourceTree = "<group>"; };
+		CD80FFF61B5AA1B500AE1DEC /* StoryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryDetailViewController.m; sourceTree = "<group>"; };
 		CDE53FA91B5A4C7A0024A22F /* MakeAFuss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakeAFuss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE53FAD1B5A4C7A0024A22F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDE53FAE1B5A4C7A0024A22F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -64,8 +75,8 @@
 		CDE53FE31B5A6C870024A22F /* CategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
 		CDE53FE51B5A6C9F0024A22F /* CreateStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateStoryViewController.h; sourceTree = "<group>"; };
 		CDE53FE61B5A6C9F0024A22F /* CreateStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStoryViewController.m; sourceTree = "<group>"; };
-		CDE53FE81B5A6CD60024A22F /* StoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryDetailViewController.h; sourceTree = "<group>"; };
-		CDE53FE91B5A6CD60024A22F /* StoryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryDetailViewController.m; sourceTree = "<group>"; };
+		CDE53FE81B5A6CD60024A22F /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		CDE53FE91B5A6CD60024A22F /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
 		CDE53FEE1B5A80C70024A22F /* PostCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCategory.h; sourceTree = "<group>"; };
 		CDE53FEF1B5A80C70024A22F /* PostCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCategory.m; sourceTree = "<group>"; };
 		CDE53FF11B5A81540024A22F /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
@@ -98,6 +109,16 @@
 				ED90329FE7D14E68C97EE44D /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD6179751B5AA63F00D62609 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD6179761B5AA66C00D62609 /* RatingView.h */,
+				CD6179771B5AA66C00D62609 /* RatingView.m */,
+				CD6179791B5AA68F00D62609 /* RatingView.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		CDE53FA01B5A4C7A0024A22F = {
@@ -161,6 +182,7 @@
 		CDE53FD21B5A6BC30024A22F /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CD6179751B5AA63F00D62609 /* Views */,
 				CDE53FDB1B5A6C340024A22F /* Content */,
 				CDE53FD41B5A6BED0024A22F /* Authentication */,
 				CDE53FD31B5A6BDE0024A22F /* Resources */,
@@ -174,8 +196,8 @@
 				CDE53FB61B5A4C7A0024A22F /* Main.storyboard */,
 				CDE53FB91B5A4C7A0024A22F /* Images.xcassets */,
 				CDE53FBB1B5A4C7A0024A22F /* LaunchScreen.xib */,
-				CD80FFEF1B5A90E100AE1DEC /* RateView.h */,
-				CD80FFF01B5A90E100AE1DEC /* RateView.m */,
+				CD6179721B5AA41100D62609 /* LLKeyboardView.h */,
+				CD6179731B5AA41100D62609 /* LLKeyboardView.m */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -202,8 +224,10 @@
 				CDE53FE31B5A6C870024A22F /* CategoriesViewController.m */,
 				CDE53FE51B5A6C9F0024A22F /* CreateStoryViewController.h */,
 				CDE53FE61B5A6C9F0024A22F /* CreateStoryViewController.m */,
-				CDE53FE81B5A6CD60024A22F /* StoryDetailViewController.h */,
-				CDE53FE91B5A6CD60024A22F /* StoryDetailViewController.m */,
+				CDE53FE81B5A6CD60024A22F /* CommentsViewController.h */,
+				CDE53FE91B5A6CD60024A22F /* CommentsViewController.m */,
+				CD80FFF51B5AA1B500AE1DEC /* StoryDetailViewController.h */,
+				CD80FFF61B5AA1B500AE1DEC /* StoryDetailViewController.m */,
 			);
 			name = Content;
 			sourceTree = "<group>";
@@ -223,6 +247,8 @@
 				CDE53FEF1B5A80C70024A22F /* PostCategory.m */,
 				CDE53FF11B5A81540024A22F /* Post.h */,
 				CDE53FF21B5A81540024A22F /* Post.m */,
+				CD80FFF21B5A9CA300AE1DEC /* Comment.h */,
+				CD80FFF31B5A9CA300AE1DEC /* Comment.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -321,6 +347,7 @@
 				CDE53FB81B5A4C7A0024A22F /* Main.storyboard in Resources */,
 				CDE53FBD1B5A4C7A0024A22F /* LaunchScreen.xib in Resources */,
 				CDE53FBA1B5A4C7A0024A22F /* Images.xcassets in Resources */,
+				CD61797A1B5AA68F00D62609 /* RatingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,14 +401,17 @@
 				CDE53FDE1B5A6C470024A22F /* DashboardViewController.m in Sources */,
 				CDE53FB21B5A4C7A0024A22F /* AppDelegate.m in Sources */,
 				CDE53FE71B5A6C9F0024A22F /* CreateStoryViewController.m in Sources */,
+				CD6179781B5AA66C00D62609 /* RatingView.m in Sources */,
 				CDE53FAF1B5A4C7A0024A22F /* main.m in Sources */,
 				CDE53FE41B5A6C870024A22F /* CategoriesViewController.m in Sources */,
 				CDE53FD71B5A6C100024A22F /* LoginViewController.m in Sources */,
 				CDE53FDA1B5A6C210024A22F /* RegisterViewController.m in Sources */,
 				CDE53FF01B5A80C70024A22F /* PostCategory.m in Sources */,
-				CD80FFF11B5A90E100AE1DEC /* RateView.m in Sources */,
+				CD80FFF41B5A9CA300AE1DEC /* Comment.m in Sources */,
 				CDE53FF31B5A81540024A22F /* Post.m in Sources */,
-				CDE53FEA1B5A6CD60024A22F /* StoryDetailViewController.m in Sources */,
+				CD80FFF71B5AA1B500AE1DEC /* StoryDetailViewController.m in Sources */,
+				CD6179741B5AA41100D62609 /* LLKeyboardView.m in Sources */,
+				CDE53FEA1B5A6CD60024A22F /* CommentsViewController.m in Sources */,
 				CDE53FE11B5A6C730024A22F /* StoriesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

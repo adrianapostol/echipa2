@@ -9,6 +9,7 @@
 #import "StoriesTableViewController.h"
 #import "Post.h"
 #import "EDStarRating.h"
+#import "StoryDetailViewController.h"
 
 @interface PostTableViewCell : UITableViewCell
 
@@ -20,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 
 @end
+
+static NSString * const ShowStoryDetail = @"ShowStoryDetail";
 
 @interface StoriesTableViewController() <EDStarRatingProtocol>
 
@@ -68,6 +71,18 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:ShowStoryDetail sender:self];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - UIStoryboardSegue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[StoryDetailViewController class]])
+        [segue.destinationViewController setPost:self.posts[self.tableView.indexPathForSelectedRow.row]];
+}
+
 + (NSArray *)createPosts {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:20];
 
@@ -92,8 +107,5 @@
     self.starRatingView.displayMode = EDStarRatingDisplayAccurate;
     self.starRatingView.editable = YES;
 }
-
-
-
 
 @end

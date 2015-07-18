@@ -67,7 +67,13 @@
 
 - (void)loadCategories:(void (^)(NSArray *categories)) completion {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSArray *categories = @[ @"Management", @"Colleagues", @"Administrative", @"Other" ];
+        NSArray *categories = @[ @"Hot Summer Time",
+                                 @"The Godfathers",
+                                 @"Client Browser",
+                                 @"Brothers in Arms",
+                                 @"Hall of Fame",
+                                 @"Everything else",
+                                 @"Life is Good"];
         if (completion) completion(categories);
     });
 }
