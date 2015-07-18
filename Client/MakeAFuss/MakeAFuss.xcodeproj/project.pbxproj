@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		80E6EE35E588B4F9B4A253A4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED90329FE7D14E68C97EE44D /* libPods.a */; };
+		CD80FFF11B5A90E100AE1DEC /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD80FFF01B5A90E100AE1DEC /* RateView.m */; };
 		CDE53FAF1B5A4C7A0024A22F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FAE1B5A4C7A0024A22F /* main.m */; };
 		CDE53FB21B5A4C7A0024A22F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FB11B5A4C7A0024A22F /* AppDelegate.m */; };
 		CDE53FB81B5A4C7A0024A22F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDE53FB61B5A4C7A0024A22F /* Main.storyboard */; };
@@ -21,6 +22,8 @@
 		CDE53FE41B5A6C870024A22F /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FE31B5A6C870024A22F /* CategoriesViewController.m */; };
 		CDE53FE71B5A6C9F0024A22F /* CreateStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FE61B5A6C9F0024A22F /* CreateStoryViewController.m */; };
 		CDE53FEA1B5A6CD60024A22F /* StoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FE91B5A6CD60024A22F /* StoryDetailViewController.m */; };
+		CDE53FF01B5A80C70024A22F /* PostCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FEF1B5A80C70024A22F /* PostCategory.m */; };
+		CDE53FF31B5A81540024A22F /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE53FF21B5A81540024A22F /* Post.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,8 @@
 /* Begin PBXFileReference section */
 		A9BFC9165A9902FE4BE4AF90 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A9EAF05A09FCC94C494ADEB7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		CD80FFEF1B5A90E100AE1DEC /* RateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
+		CD80FFF01B5A90E100AE1DEC /* RateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
 		CDE53FA91B5A4C7A0024A22F /* MakeAFuss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakeAFuss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE53FAD1B5A4C7A0024A22F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDE53FAE1B5A4C7A0024A22F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -61,6 +66,10 @@
 		CDE53FE61B5A6C9F0024A22F /* CreateStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStoryViewController.m; sourceTree = "<group>"; };
 		CDE53FE81B5A6CD60024A22F /* StoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryDetailViewController.h; sourceTree = "<group>"; };
 		CDE53FE91B5A6CD60024A22F /* StoryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryDetailViewController.m; sourceTree = "<group>"; };
+		CDE53FEE1B5A80C70024A22F /* PostCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCategory.h; sourceTree = "<group>"; };
+		CDE53FEF1B5A80C70024A22F /* PostCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCategory.m; sourceTree = "<group>"; };
+		CDE53FF11B5A81540024A22F /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		CDE53FF21B5A81540024A22F /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		ED90329FE7D14E68C97EE44D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -165,6 +174,8 @@
 				CDE53FB61B5A4C7A0024A22F /* Main.storyboard */,
 				CDE53FB91B5A4C7A0024A22F /* Images.xcassets */,
 				CDE53FBB1B5A4C7A0024A22F /* LaunchScreen.xib */,
+				CD80FFEF1B5A90E100AE1DEC /* RateView.h */,
+				CD80FFF01B5A90E100AE1DEC /* RateView.m */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -200,8 +211,20 @@
 		CDE53FEB1B5A6CE50024A22F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CDE53FED1B5A80B70024A22F /* Models */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		CDE53FED1B5A80B70024A22F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CDE53FEE1B5A80C70024A22F /* PostCategory.h */,
+				CDE53FEF1B5A80C70024A22F /* PostCategory.m */,
+				CDE53FF11B5A81540024A22F /* Post.h */,
+				CDE53FF21B5A81540024A22F /* Post.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		D4A998C181963ABDCFDD8A53 /* Pods */ = {
@@ -355,6 +378,9 @@
 				CDE53FE41B5A6C870024A22F /* CategoriesViewController.m in Sources */,
 				CDE53FD71B5A6C100024A22F /* LoginViewController.m in Sources */,
 				CDE53FDA1B5A6C210024A22F /* RegisterViewController.m in Sources */,
+				CDE53FF01B5A80C70024A22F /* PostCategory.m in Sources */,
+				CD80FFF11B5A90E100AE1DEC /* RateView.m in Sources */,
+				CDE53FF31B5A81540024A22F /* Post.m in Sources */,
 				CDE53FEA1B5A6CD60024A22F /* StoryDetailViewController.m in Sources */,
 				CDE53FE11B5A6C730024A22F /* StoriesTableViewController.m in Sources */,
 			);

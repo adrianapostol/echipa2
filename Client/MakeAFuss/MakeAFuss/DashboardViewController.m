@@ -13,7 +13,7 @@
 @interface DashboardViewController () <UISearchBarDelegate, CategoriesViewControllerDelegate>
 
 @property (nonatomic, weak) StoriesTableViewController *storiesController;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *storyChannelSegmentedControl;
 
 @end
@@ -24,6 +24,14 @@
     [super viewDidLoad];
     
     self.storiesController = self.childViewControllers.firstObject;
+    self.searchBar = [[UISearchBar alloc] init];
+    self.searchBar.delegate = self;
+    self.searchBar.placeholder = @"Search for a post";
+    self.navigationItem.titleView = self.searchBar;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 #pragma mark - UISearchBarDelegate
