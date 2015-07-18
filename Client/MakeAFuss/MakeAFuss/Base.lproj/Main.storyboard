@@ -386,6 +386,9 @@
                                             <segment title="Popular"/>
                                             <segment title="Recent"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="selectedTabChanged:" destination="GcX-YX-hYh" eventType="valueChanged" id="xo0-eQ-A7f"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -399,6 +402,9 @@
                             <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for topics" translatesAutoresizingMaskIntoConstraints="NO" id="y7A-tL-qFt">
                                 <rect key="frame" x="0.0" y="278" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="GcX-YX-hYh" id="EMH-GR-bPj"/>
+                                </connections>
                             </searchBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Jk-aG-Epg">
                                 <rect key="frame" x="0.0" y="108" width="600" height="448"/>
@@ -435,6 +441,10 @@
                         </connections>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="y7A-tL-qFt" id="2lC-kT-PST"/>
+                        <outlet property="storyChannelSegmentedControl" destination="wdk-xw-BdF" id="SEJ-zz-MWa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sep-dU-InY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

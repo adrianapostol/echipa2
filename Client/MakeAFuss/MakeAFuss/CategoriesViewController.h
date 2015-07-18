@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class CategoriesViewController;
+
+@protocol CategoriesViewControllerDelegate <NSObject>
+
+- (void)categoriesViewController:(CategoriesViewController *)categoriesViewController didSelectCategory:(NSString *)category;
+
+@end
+
+
+
 @interface CategoriesViewController : UITableViewController
+
+@property (nonatomic, weak) id<CategoriesViewControllerDelegate> delegate;
 
 @end

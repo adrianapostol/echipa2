@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, StoryChannelType) {
+    StoryChannelTypeTopRated,
+    StoryChannelTypePopular,
+    StoryChannelTypeRecent
+};
+
 @interface StoriesTableViewController : UITableViewController
+
+@property (nonatomic, copy) NSString *storyCategory;
+
+- (void)updateStoriesForChannelType:(StoryChannelType)channelType;
+- (void)updateStoriesForQuery:(NSString *)query;
 
 @end

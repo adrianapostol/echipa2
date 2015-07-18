@@ -10,4 +10,14 @@
 
 @implementation StoriesTableViewController
 
+#pragma mark - Public
+
+- (void)updateStoriesForChannelType:(StoryChannelType)channelType {
+    
+}
+
+- (void)updateStoriesForQuery:(NSString *)query {
+    
+}
+
 @end
