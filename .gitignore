@@ -1,0 +1,44 @@
+# Xcode
+*xcbkptlist*
+*DS_Store*
+*/Build/*
+*/BuildHeaders/*
+*/build/*
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.swp
+*~.nib
+xcuserdata
+xcuserdata/*
+*/xcuserdata
+*/xcuserdata/*
+profile
+*.moved-aside
+DerivedData
+.idea/
+*.hmap
+*.xcworkspace
+*.xcbkptlist
+MakeAFuss.xcodeproj/project.xcworkspace/xcuserdata/
+MakeAFuss.xcodeproj/project.xcworkspace/xcuserdata/*
+MakeAFuss.xcodeproj/project.xcworkspace/
+MakeAFuss.xcodeproj/project.xcworkspace
+MakeAFuss.xcodeproj/project.xcworkspace/*
+MakeAFuss.xcworkspace/xcuserdata/*
+docs
+
+
+#CocoaPods
+
+# xctool debug
+build
+
+# misc
+tmp
+.config
