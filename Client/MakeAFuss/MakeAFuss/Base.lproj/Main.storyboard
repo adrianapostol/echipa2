@@ -571,13 +571,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="Category Cell" id="Rs2-66-9D0">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Category Cell" id="Rs2-66-9D0" customClass="CategoriesTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rs2-66-9D0" id="FZ5-gS-R1Y">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Managers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vsf-JB-CUb">
-                                            <rect key="frame" x="8" y="11" width="537" height="21"/>
+                                            <rect key="frame" x="8" y="11" width="576" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -590,6 +590,9 @@
                                         <constraint firstItem="Vsf-JB-CUb" firstAttribute="leading" secondItem="FZ5-gS-R1Y" secondAttribute="leadingMargin" id="vGg-iX-pWm"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="titleLabel" destination="Vsf-JB-CUb" id="nAA-Nk-qi5"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -598,8 +601,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select Category" id="nee-54-aqa">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WVG-JX-M9l"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="C7E-8Y-Qvx"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WVG-JX-M9l">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="w0E-SV-mCY" id="TKk-dN-PF6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="C7E-8Y-Qvx">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="w0E-SV-mCY" id="Y6h-Vt-DL1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HAY-jV-ym7" userLabel="First Responder" sceneMemberID="firstResponder"/>
