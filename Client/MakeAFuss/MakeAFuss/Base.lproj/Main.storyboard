@@ -38,6 +38,9 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAT-yX-7Jf" userLabel="Login">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Wbk-pe-gSj"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Login" backgroundImage="GreyButton">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -51,6 +54,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqk-dF-heu" userLabel="Register">
                                         <rect key="frame" x="0.0" y="48" width="200" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Du1-MC-kA2"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Register" backgroundImage="GreyButton">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -91,7 +97,7 @@
         <!--Login-->
         <scene sceneID="FRZ-UX-AQP">
             <objects>
-                <viewController title="Login" id="UlF-WX-IpC" sceneMemberID="viewController">
+                <viewController title="Login" id="UlF-WX-IpC" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mlY-DH-7s2"/>
                         <viewControllerLayoutGuide type="bottom" id="3jP-yK-vcY"/>
@@ -107,11 +113,17 @@
                                         <rect key="frame" x="8" y="8" width="552" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldDidChangeText:" destination="UlF-WX-IpC" eventType="editingChanged" id="aLD-aO-2Fj"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PtU-CP-e7v" userLabel="password">
                                         <rect key="frame" x="8" y="46" width="552" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="textFieldDidChangeText:" destination="UlF-WX-IpC" eventType="editingChanged" id="K04-23-DLi"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ub-SD-eKV" userLabel="Login">
                                         <rect key="frame" x="184" y="93" width="200" height="40"/>
@@ -126,7 +138,7 @@
                                         <state key="selected" backgroundImage="grey_default_button"/>
                                         <state key="highlighted" backgroundImage="GreyButtonSelected"/>
                                         <connections>
-                                            <segue destination="GcX-YX-hYh" kind="show" id="eOg-w7-2rG"/>
+                                            <action selector="loginButtonTapped:" destination="UlF-WX-IpC" eventType="touchUpInside" id="aXX-2n-U4z"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -166,6 +178,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="1Ub-SD-eKV" id="29S-4o-abt"/>
+                        <outlet property="nameField" destination="mn8-QU-Fo0" id="SXR-4j-iXB"/>
+                        <outlet property="passwordField" destination="PtU-CP-e7v" id="f37-Sj-afw"/>
                         <segue destination="GcX-YX-hYh" kind="show" identifier="ShowDashboard" id="Wf3-Pe-fM7"/>
                     </connections>
                 </viewController>
@@ -176,7 +191,7 @@
         <!--Register-->
         <scene sceneID="aKW-hk-p2q">
             <objects>
-                <viewController title="Register" id="Ce4-Nm-rFj" sceneMemberID="viewController">
+                <viewController title="Register" id="Ce4-Nm-rFj" customClass="RegisterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nbh-4J-BzV"/>
                         <viewControllerLayoutGuide type="bottom" id="Hda-IN-gfN"/>
@@ -192,16 +207,25 @@
                                         <rect key="frame" x="8" y="8" width="552" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldDidChangeText:" destination="Ce4-Nm-rFj" eventType="editingChanged" id="nHT-SZ-hP0"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nTx-vd-1PC" userLabel="password">
                                         <rect key="frame" x="8" y="46" width="552" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="textFieldDidChangeText:" destination="Ce4-Nm-rFj" eventType="editingChanged" id="gPA-FJ-wrN"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUc-w6-rcq" userLabel="confirm password">
                                         <rect key="frame" x="8" y="84" width="552" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="textFieldDidChangeText:" destination="Ce4-Nm-rFj" eventType="editingChanged" id="aMA-Gm-VAb"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gd8-dl-if7" userLabel="Login">
                                         <rect key="frame" x="184" y="131" width="200" height="40"/>
@@ -215,6 +239,9 @@
                                         </state>
                                         <state key="selected" backgroundImage="grey_default_button"/>
                                         <state key="highlighted" backgroundImage="GreyButtonPressed"/>
+                                        <connections>
+                                            <action selector="registerButtonTapped:" destination="Ce4-Nm-rFj" eventType="touchUpInside" id="OSv-ZQ-ym4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -256,6 +283,10 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="confirmPasswordField" destination="FUc-w6-rcq" id="BQb-dm-z22"/>
+                        <outlet property="nameField" destination="wEB-J4-hCQ" id="XWQ-Ws-Z8C"/>
+                        <outlet property="passwordField" destination="nTx-vd-1PC" id="nRO-Ah-msx"/>
+                        <outlet property="registerButton" destination="gd8-dl-if7" id="F3t-sJ-j9x"/>
                         <segue destination="GcX-YX-hYh" kind="show" identifier="ShowDashboard" id="sX7-T7-fIA"/>
                     </connections>
                 </viewController>
@@ -263,10 +294,10 @@
             </objects>
             <point key="canvasLocation" x="809" y="850"/>
         </scene>
-        <!--Posts-->
+        <!--Stories-->
         <scene sceneID="WON-nT-smB">
             <objects>
-                <tableViewController title="Posts" id="rBE-12-6lc" sceneMemberID="viewController">
+                <tableViewController title="Stories" id="rBE-12-6lc" customClass="StoriesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="22" sectionFooterHeight="22" id="IGU-PC-N9a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="448"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -336,7 +367,7 @@
         <!--Dashboard-->
         <scene sceneID="ZAD-di-5zO">
             <objects>
-                <viewController title="Dashboard" id="GcX-YX-hYh" sceneMemberID="viewController">
+                <viewController title="Dashboard" id="GcX-YX-hYh" customClass="DashboardViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Mw-lA-Ecx"/>
                         <viewControllerLayoutGuide type="bottom" id="ffF-J1-mFK"/>
@@ -425,10 +456,10 @@
             </objects>
             <point key="canvasLocation" x="2853" y="-338"/>
         </scene>
-        <!--Create Post-->
+        <!--Create Story-->
         <scene sceneID="Ilf-sQ-k1t">
             <objects>
-                <viewController title="Create Post" id="lP1-FW-oh4" sceneMemberID="viewController">
+                <viewController title="Create Story" id="lP1-FW-oh4" customClass="CreateStoryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SBq-TM-WPB"/>
                         <viewControllerLayoutGuide type="bottom" id="J7Z-WW-x5N"/>
@@ -524,7 +555,7 @@
         <!--Categories Controller-->
         <scene sceneID="cRa-b8-8YH">
             <objects>
-                <tableViewController title="Categories Controller" id="w0E-SV-mCY" sceneMemberID="viewController">
+                <tableViewController title="Categories Controller" id="w0E-SV-mCY" customClass="CategoriesViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0dt-Lf-ogh">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -581,10 +612,10 @@
             </objects>
             <point key="canvasLocation" x="2853" y="864"/>
         </scene>
-        <!--Post Detail-->
+        <!--Story Detail-->
         <scene sceneID="qt1-sR-s1m">
             <objects>
-                <tableViewController title="Post Detail" id="mPJ-H6-1IA" sceneMemberID="viewController">
+                <tableViewController title="Story Detail" id="mPJ-H6-1IA" customClass="StoryDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" id="tse-Fk-ZUm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -637,7 +668,7 @@
         <image name="grey_default_button" width="4" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wf3-Pe-fM7"/>
+        <segue reference="sX7-T7-fIA"/>
         <segue reference="zUx-Z3-H30"/>
     </inferredMetricsTieBreakers>
 </document>
