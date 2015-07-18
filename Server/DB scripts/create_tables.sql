@@ -1,3 +1,11 @@
+
+
+DELETE FROM Ratings ;
+DELETE FROM Comments ;
+DELETE FROM Posts ;
+DELETE FROM Category ;
+DELETE FROM Users ;
+
 DROP INDEX id on Ratings;
 DROP INDEX id on Comments;
 DROP INDEX id on Posts;
@@ -38,8 +46,8 @@ CREATE TABLE Posts
 	categoryId int,
 	postTime datetime,
 	active boolean,
-	FOREIGN KEY (userId) REFERENCES Users(id),
-	FOREIGN KEY (categoryId) REFERENCES Category(id)
+	FOREIGN KEY (userId) REFERENCES Users(id) ON DELETE CASCADE,
+	FOREIGN KEY (categoryId) REFERENCES Category(id) ON DELETE CASCADE
 	
 );
 
@@ -53,8 +61,8 @@ CREATE TABLE Comments
 	postId int,
 	commentTime datetime,
 	active boolean,
-	FOREIGN KEY (userId) REFERENCES Users(id),
-	FOREIGN KEY (postId) REFERENCES Posts(id)
+	FOREIGN KEY (userId) REFERENCES Users(id) ON DELETE CASCADE,
+	FOREIGN KEY (postId) REFERENCES Posts(id) ON DELETE CASCADE
 );
 
 ALTER TABLE Comments ADD INDEX (id);
@@ -65,8 +73,14 @@ CREATE TABLE Ratings
 	userId int, 
 	postId int,
 	rating int,
-	FOREIGN KEY (userId) REFERENCES Users(id),
-	FOREIGN KEY (postId) REFERENCES Posts(id)
+	FOREIGN KEY (userId) REFERENCES Users(id) ON DELETE CASCADE,
+	FOREIGN KEY (postId) REFERENCES Posts(id) ON DELETE CASCADE
 );
 
 ALTER TABLE Ratings ADD INDEX (id);
+
+INSERT INTO Category (categoryName) VALUES ('Management');
+INSERT INTO Category (categoryName) VALUES ('Colleagues');
+INSERT INTO Category (categoryName) VALUES ('Project');
+INSERT INTO Category (categoryName) VALUES ('Clients');
+INSERT INTO Category (categoryName) VALUES ('Others');
