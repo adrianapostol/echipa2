@@ -21,8 +21,7 @@
         _category = category;
         _date = date;
         _active = active;
-//        _rating = rating;
-        _rating = arc4random() % 6;
+        _rating = rating;
         _user = user;
     }
     return self;
@@ -33,9 +32,10 @@
     if (!formatter) {
         formatter = [[NSDateFormatter alloc] init];
     }
-    NSDate *postDate = [formatter dateFromString:dictionary[@"timestamp"]];
     
-    return [[Post alloc] initWithPostID:dictionary[@"postID"]
+    NSDate *postDate = [NSDate dateWithTimeIntervalSince1970:[dictionary[@"postTime"] doubleValue]];
+    
+    return [[Post alloc] initWithPostID:dictionary[@"id"]
                                   title:dictionary[@"title"]
                                 content:dictionary[@"content"]
                                category:dictionary[@"category"]

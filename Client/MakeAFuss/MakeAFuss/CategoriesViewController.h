@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PostCategory.h"
 
 @class CategoriesViewController;
 
 @protocol CategoriesViewControllerDelegate <NSObject>
 
-- (void)categoriesViewController:(CategoriesViewController *)categoriesViewController didSelectCategory:(NSString *)category;
+- (void)categoriesViewController:(CategoriesViewController *)categoriesViewController didSelectCategory:(PostCategory *)category;
 
 @end
 

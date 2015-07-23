@@ -10,10 +10,10 @@
 
 @interface PostCategory : NSObject
 
-@property (nonatomic, strong) NSString *categoryID;
+@property (nonatomic, strong) NSNumber *categoryID;
 @property (nonatomic, strong) NSString *categoryName;
 
-- (instancetype)initWithID:(NSString *)post name:(NSString *)name;
+- (instancetype)initWithID:(NSNumber *)categoryId name:(NSString *)name;
 
 + (instancetype)categoryWithDictionary:(NSDictionary *)dictionary;
 

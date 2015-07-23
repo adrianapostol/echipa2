@@ -28,6 +28,8 @@ static NSString * const ShowStoryDetail = @"ShowStoryDetail";
 @interface StoriesTableViewController() <EDStarRatingProtocol>
 
 @property (nonatomic, copy) NSArray *posts;
+@property (nonatomic, strong) PostCategory *selectedCategory;
+@property (nonatomic, assign) PostType currentPostType;
 
 @end
 
@@ -39,12 +41,19 @@ static NSString * const ShowStoryDetail = @"ShowStoryDetail";
     self.tableView.estimatedRowHeight = 80;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
+    self.currentPostType = PostTypeTopRated;
     [self loadPosts];
 }
 
 #pragma mark - Public
 
+- (void)setPostCategory:(PostCategory *)postCategory {
+    _postCategory = postCategory;
+    [self loadPosts];
+}
+
 - (void)updateStoriesForChannelType:(StoryChannelType)channelType {
+    self.currentPostType = (PostType)channelType;
     [self loadPosts];
 }
 
@@ -86,7 +95,7 @@ static NSString * const ShowStoryDetail = @"ShowStoryDetail";
 
 - (void)loadPosts {
     __weak typeof(self) weakSelf = self;
-    [[AppSession defaultSession] fetchPostsWithParams:nil completion:^(NSArray *posts) {
+    [[AppSession defaultSession] fetchPostsWithType:self.currentPostType category:self.selectedCategory completion:^(NSArray *posts) {
         weakSelf.posts = posts;
         [weakSelf.tableView reloadData];
     }];

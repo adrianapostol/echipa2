@@ -106,7 +106,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pWO-VF-3q9" userLabel="container">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWO-VF-3q9" userLabel="container">
                                 <rect key="frame" x="16" y="124" width="568" height="141"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mn8-QU-Fo0" userLabel="username">
@@ -125,7 +125,7 @@
                                             <action selector="textFieldDidChangeText:" destination="UlF-WX-IpC" eventType="editingChanged" id="K04-23-DLi"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ub-SD-eKV" userLabel="Login">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ub-SD-eKV" userLabel="Login">
                                         <rect key="frame" x="184" y="93" width="200" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="pft-7Z-GY0"/>
@@ -200,7 +200,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YGm-rQ-QwJ" userLabel="container">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGm-rQ-QwJ" userLabel="container">
                                 <rect key="frame" x="16" y="124" width="568" height="179"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wEB-J4-hCQ" userLabel="username">
@@ -227,7 +227,7 @@
                                             <action selector="textFieldDidChangeText:" destination="Ce4-Nm-rFj" eventType="editingChanged" id="aMA-Gm-VAb"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gd8-dl-if7" userLabel="Login">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gd8-dl-if7" userLabel="Login">
                                         <rect key="frame" x="184" y="131" width="200" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Wdd-AQ-17D"/>
@@ -506,11 +506,11 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C40-tT-sM1">
                                         <rect key="frame" x="8" y="8" width="584" height="34"/>
                                         <state key="normal" title="Select Category">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.043137254899999998" green="0.51764705879999995" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="w0E-SV-mCY" kind="show" id="zUx-Z3-H30"/>
+                                            <segue destination="IHH-WQ-ujt" kind="presentation" id="wcf-X0-zF4"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TMT-yo-1GR">
@@ -587,6 +587,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="anonymousSwitch" destination="pff-cm-MWj" id="Z6Q-jL-tNs"/>
+                        <outlet property="contentTextView" destination="Sdr-nj-6tA" id="oBo-o0-QbE"/>
+                        <outlet property="selectCategoryButton" destination="C40-tT-sM1" id="uEc-qS-MEw"/>
+                        <outlet property="titleField" destination="TMT-yo-1GR" id="gx5-tT-p0n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="akx-GC-Gri" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -746,6 +752,9 @@
                                         <state key="normal" title="Post">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="postButtonTapped:" destination="fmW-4u-YqF" eventType="touchUpInside" id="f2Z-zE-cuP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -784,6 +793,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="commentField" destination="Iyx-ba-eFx" id="0gW-Zz-rcQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X1h-iJ-O7g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -798,6 +810,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sX7-T7-fIA"/>
-        <segue reference="xkk-6M-RCX"/>
+        <segue reference="wcf-X0-zF4"/>
     </inferredMetricsTieBreakers>
 </document>

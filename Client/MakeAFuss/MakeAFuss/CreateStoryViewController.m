@@ -7,12 +7,31 @@
 //
 
 #import "CreateStoryViewController.h"
+#import "CategoriesViewController.h"
+#import "AppSession.h"
 
-@interface CreateStoryViewController ()
+@interface CreateStoryViewController () <CategoriesViewControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIButton *selectCategoryButton;
+@property (weak, nonatomic) IBOutlet UITextField *titleField;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property (weak, nonatomic) IBOutlet UISwitch *anonymousSwitch;
+
+@property (nonatomic, strong) PostCategory *category;
 
 @end
 
 @implementation CreateStoryViewController
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
+        id rootViewController = [[segue.destinationViewController viewControllers] firstObject];
+        if ([rootViewController isKindOfClass:[CategoriesViewController class]]) {
+            [rootViewController setDelegate:self];
+        }
+    }
+}
 
 
 #pragma mark - IBActions
@@ -34,12 +53,19 @@
     return YES;
 }
 
+#pragma mark - CategoriesViewControllerDelegate
+
+- (void)categoriesViewController:(CategoriesViewController *)categoriesViewController didSelectCategory:(PostCategory *)category {
+    self.category = category;
+    [self.selectCategoryButton setTitle:category.categoryName forState:UIControlStateNormal];
+}
+
 #pragma mark - Private
 
 - (void)createStory:(void (^)(BOOL successful)) completion {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (completion) completion(YES);
-    });
+    [[AppSession defaultSession] addPostWithTitle:self.titleField.text content:self.contentTextView.text categoryId:[self.category.categoryID integerValue] anonymous:self.anonymousSwitch.isOn completion:^(BOOL success) {
+        if (completion) completion(success);
+    }];
 }
 
 @end

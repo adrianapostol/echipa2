@@ -28,6 +28,7 @@ static NSString * const FailMessage = @"Fail";
     if (self) {
         _sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:url];
         _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
     }
     return self;
 }
@@ -73,26 +74,57 @@ static NSString * const FailMessage = @"Fail";
     }];
 }
 
-- (void)fetchPostsWithParams:(NSDictionary *)postsParams completion:(void (^)(NSArray *posts))completion {
-    NSString *path = [NSString stringWithFormat:@"posts/getPopular/2"];
+- (void)addPostWithTitle:(NSString *)title content:(NSString *)content categoryId:(NSInteger)categoryId anonymous:(BOOL)anonymous completion:(void (^)(BOOL success))completion {
+    NSDictionary *params = @{ @"title": title, @"userId": self.userID, @"categoryId": @(categoryId), @"anonymous": @(anonymous), @"content": content };
+    [self.sessionManager POST:@"posts/addPost" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (completion) completion(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (completion) completion(NO);
+    }];
+}
+
+- (void)addRating:(float)rating toPost:(Post *)post completion:(void (^)(BOOL success))completion{
+    NSString *path = [NSString stringWithFormat: @"posts/addPostRating/%@/%@/%@",post.postID, self.userID, @(rating)];
     
-    completion([[self class] createPosts]);
+    [self.sessionManager GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (completion) completion(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (completion) completion(NO);
+    }];
+}
+- (void)fetchPostsWithType:(PostType)type category:(PostCategory *)category completion:(void (^)(NSArray *categories))completion {
+    NSString *typeEndpoint = @"getRecent";
+    if (type == PostTypePopular) {
+        typeEndpoint = @"getPopular";
+    } else if (type == PostTypeTopRated) {
+        typeEndpoint = @"getTopRated";
+    }
     
+    NSInteger categoryId = category ? [category.categoryID integerValue] : 0;
+    NSString *path = [NSString stringWithFormat:@"posts/%@/%@", typeEndpoint, @(categoryId)];
     [self.sessionManager GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray *posts = [NSMutableArray arrayWithCapacity:[responseObject count]];
         for (NSDictionary *dict in responseObject) {
             [posts addObject:[Post postWithDictionary:dict]];
         }
-        completion(posts);
-     
+        if (completion) completion(posts);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        completion(nil);
+        if (completion) completion(nil);
+    }];
+}
+
+- (void)addComment:(NSString *)commentText toPost:(Post *)post anonymous:(BOOL)anonymous completion:(void (^)(BOOL success))completion {
+    NSDictionary *params = @{ @"postId": post.postID, @"userId": self.userID, @"anonymous": @(anonymous), @"content": commentText };
+
+    [self.sessionManager POST:@"posts/addComment" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (completion) completion(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (completion) completion(NO);
     }];
 }
 
 - (void)fetchCategories:(void (^)(NSArray *categories))completion {
-
-    [self.sessionManager GET:@"categories" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.sessionManager GET:@"categories/getCategories" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray *categories = [NSMutableArray arrayWithCapacity:[responseObject count]];
         for (NSDictionary *dict in responseObject) {
             [categories addObject:[PostCategory categoryWithDictionary:dict]];
@@ -117,48 +149,7 @@ static NSString * const FailMessage = @"Fail";
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         completion(nil);
     }];
-    completion([[self class] createComments]);
 }
 
-- (void)addPost:(NSDictionary *)post completion:(void (^)(BOOL success))completion {
-    NSString *path = [NSString stringWithFormat:@"posts/%@/1/%@/%@/%@", post[@"title"], post[@"content"], post[@"category"], self.userID];
-
-    [self.sessionManager POST:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([responseObject isEqualToString:FailMessage]) {
-            completion(NO);
-        } else {
-            completion(YES);
-        }
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        completion(NO);
-    }];
-}
-
-#pragma mark - Hardcodes
-
-+ (NSArray *)createPosts {
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:20];
-    static NSInteger var = 0;
-    var = (var + 1) % 2;
-    NSString *title = var ? @"Hackthon" : @"Cherry Day";
-    NSString *user = var ? @"Andrei C" : @"Codruta S";
-    
-    for (int idx = 0; idx < 20; idx++) {
-        [array addObject:[[Post alloc] initWithPostID:@"1" title:title content:@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris" category:@"Other" date:[NSDate date] active:YES rating:5.0 user:user]];
-    }
-    
-    return array;
-}
-
-+ (NSArray *)createComments {
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:20];
-    
-    for (int idx = 0; idx < 20; idx++) {
-        [array addObject:[[Comment alloc] initWithID:@"ID" text:@"This is the best comment ever. You can't write one better." user:@"iCeq"]];
-    }
-    
-    return array;
-}
 
 @end

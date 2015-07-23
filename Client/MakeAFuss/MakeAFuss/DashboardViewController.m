@@ -42,8 +42,8 @@
 
 #pragma mark - CategoriesViewControllerDelegate
 
-- (void)categoriesViewController:(CategoriesViewController *)categoriesViewController didSelectCategory:(NSString *)category {
-    self.storiesController.storyCategory = category;
+- (void)categoriesViewController:(CategoriesViewController *)categoriesViewController didSelectCategory:(PostCategory *)category {
+    self.storiesController.postCategory = category;
 }
 
 #pragma mark - IBActions

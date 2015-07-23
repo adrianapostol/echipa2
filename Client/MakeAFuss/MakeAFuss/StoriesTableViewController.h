@@ -7,16 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppSession.h"
+#import "PostCategory.h"
 
 typedef NS_ENUM(NSUInteger, StoryChannelType) {
-    StoryChannelTypeTopRated,
-    StoryChannelTypePopular,
-    StoryChannelTypeRecent
+    StoryChannelTypeTopRated = PostTypeTopRated,
+    StoryChannelTypePopular = PostTypePopular,
+    StoryChannelTypeRecent = PostTypeRecent
 };
 
 @interface StoriesTableViewController : UITableViewController
 
-@property (nonatomic, copy) NSString *storyCategory;
+@property (nonatomic, copy) PostCategory *postCategory;
 
 - (void)updateStoriesForChannelType:(StoryChannelType)channelType;
 - (void)updateStoriesForQuery:(NSString *)query;

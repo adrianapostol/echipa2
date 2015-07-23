@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) RatingView *ratingView;
 @property (nonatomic, weak) CommentsViewController *commentsViewController;
+@property (weak, nonatomic) IBOutlet UITextField *commentField;
 
 @end
 
@@ -44,6 +45,20 @@
 
 - (void)ratingView:(RatingView *)ratingView didSelectRating:(float)rating {
     [self.ratingView removeFromSuperview];
+    [[AppSession defaultSession] addRating:rating toPost:self.post completion:^(BOOL success) {
+        NSLog(@"Post Rated: %@", self.post.title);
+    }];
+}
+- (IBAction)postButtonTapped:(id)sender {
+    NSString *text = self.commentField.text;
+    text = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (text.length) {
+        [[AppSession defaultSession] addComment:text toPost:self.post anonymous:NO completion:^(BOOL success) {
+            if (success) {
+                self.commentField.text = nil;
+            }
+        }];
+    }
 }
 
 - (void)loadComments {

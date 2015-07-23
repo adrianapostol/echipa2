@@ -35,7 +35,6 @@
     }];
 }
 
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -44,7 +43,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CategoriesTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Category Cell" forIndexPath:indexPath];
-    cell.titleLabel.text = self.categories[indexPath.row];
+    cell.titleLabel.text = [self.categories[indexPath.row] categoryName];
     
     return cell;
 }
@@ -67,20 +66,9 @@
 #pragma mark - Private
 
 - (void)loadCategories:(void (^)(NSArray *categories)) completion {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSArray *categories = @[ @"All",
-                                 @"Hot Summer Time",
-                                 @"The Godfathers",
-                                 @"Client Browser",
-                                 @"Brothers in Arms",
-                                 @"Hall of Fame",
-                                 @"Everything else",
-                                 @"Life is Good"];
-        if (completion) completion(categories);
-    });
-//    [[AppSession defaultSession] fetchCategories:^(NSArray *categories) {
-//        completion(categories);
-//    }];
+    [[AppSession defaultSession] fetchCategories:^(NSArray *categories) {
+        completion(categories);
+    }];
 }
 
 @end

@@ -66,11 +66,6 @@
                         <constraint firstAttribute="centerY" secondItem="Qx2-UF-yPd" secondAttribute="centerY" constant="30" id="Pog-WC-4D6"/>
                         <constraint firstAttribute="centerX" secondItem="Qx2-UF-yPd" secondAttribute="centerX" id="wlN-Hv-iM6"/>
                     </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
-                            <integer key="value" value="5"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
