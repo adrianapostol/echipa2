@@ -57,7 +57,7 @@ static NSString * const ShowDashboardSegueIdentifier = @"ShowDashboard";
 
 - (void)login:( void (^) (BOOL successful))completion {
     [[AppSession defaultSession] loginUser:self.nameField.text password:self.passwordField.text completion:^(BOOL success) {
-        if (completion) completion(YES);
+        if (completion) completion(success);
     }];
 }
 

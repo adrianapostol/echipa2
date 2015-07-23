@@ -17,7 +17,7 @@ static NSString * const FailMessage = @"Fail";
 @interface AppSession ()
 
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
-@property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) NSNumber *userID;
 
 @end
 
@@ -44,61 +44,53 @@ static NSString * const FailMessage = @"Fail";
 
 - (void)registerUser:(NSString *)name password:(NSString *)password completion:(void (^)(BOOL success))completion {
     NSString *path = [NSString stringWithFormat:@"authenticate/register/%@/%@",name, password];
-    _sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
-//    [self.sessionManager GET:path parameters:nil success:^(NSURLSessionDataTask *task, NSString* responseObject) {
-//        
-////        if ([responseObject isEqualToString:FailMessage]) {
-////            completion(NO);
-////        } else {
-////            completion(YES);
-////            self.userID = responseObject;
-////        }
-//        completion(YES);
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        completion(NO);
-//    }];
-    completion(YES);
+    [self.sessionManager GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (responseObject[@"errorMessage"] == [NSNull null]) {
+            self.userID = responseObject[@"userId"];
+            completion(YES);
+        } else {
+            completion(NO);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(NO);
+    }];
 }
 
 - (void)loginUser:(NSString *)name password:(NSString *)password completion:(void (^)(BOOL success))completion {
     NSString *path = [NSString stringWithFormat:@"authenticate/login/%@/%@",name, password];
-    _sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//
-//    [self.sessionManager GET:path parameters:nil success:^(NSURLSessionDataTask *task, NSString* responseObject) {
-//        if ([responseObject isEqualToString:FailMessage]) {
-//            completion(NO);
-//        } else {
-//            completion(YES);
-//            self.userID = responseObject;
-//        }
-//        completion(YES);
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        completion(NO);
-//    }];
-    completion(YES);
+
+    [self.sessionManager GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (responseObject[@"errorMessage"] == [NSNull null]) {
+            self.userID = responseObject[@"userId"];
+            completion(YES);
+        } else {
+            completion(NO);
+        }
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(NO);
+    }];
 }
 
 - (void)fetchPostsWithParams:(NSDictionary *)postsParams completion:(void (^)(NSArray *posts))completion {
-    _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
     NSString *path = [NSString stringWithFormat:@"posts/getPopular/2"];
     
     completion([[self class] createPosts]);
     
-//    [self.sessionManager GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-//        NSMutableArray *posts = [NSMutableArray arrayWithCapacity:[responseObject count]];
-//        for (NSDictionary *dict in responseObject) {
-//            [posts addObject:[Post postWithDictionary:dict]];
-//        }
-//        completion(posts);
-//     
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        completion(nil);
-//    }];
+    [self.sessionManager GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray *posts = [NSMutableArray arrayWithCapacity:[responseObject count]];
+        for (NSDictionary *dict in responseObject) {
+            [posts addObject:[Post postWithDictionary:dict]];
+        }
+        completion(posts);
+     
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(nil);
+    }];
 }
 
 - (void)fetchCategories:(void (^)(NSArray *categories))completion {
-    _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
 
     [self.sessionManager GET:@"categories" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray *categories = [NSMutableArray arrayWithCapacity:[responseObject count]];
@@ -113,25 +105,23 @@ static NSString * const FailMessage = @"Fail";
 }
 
 - (void)fetchCommentsForPost:(Post *)post completion:(void (^)(NSArray *comments))completion {
-    _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
     NSString *path = [NSString stringWithFormat:@"comments/%@", post.postID];
     
-//    [self.sessionManager GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-//        NSMutableArray *comments = [NSMutableArray arrayWithCapacity:[responseObject count]];
-//        for (NSDictionary *dict in responseObject) {
-//            [comments addObject:[Comment commentWithDictionary:dict]];
-//        }
-//        completion(comments);
-//        
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        completion(nil);
-//    }];
+    [self.sessionManager GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray *comments = [NSMutableArray arrayWithCapacity:[responseObject count]];
+        for (NSDictionary *dict in responseObject) {
+            [comments addObject:[Comment commentWithDictionary:dict]];
+        }
+        completion(comments);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(nil);
+    }];
     completion([[self class] createComments]);
 }
 
 - (void)addPost:(NSDictionary *)post completion:(void (^)(BOOL success))completion {
-    _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
-    NSString *path = [NSString stringWithFormat:@"posts/%@/1/%@/%@/", post[@"title"], post[@"content"], post[@"category"], self.userID];
+    NSString *path = [NSString stringWithFormat:@"posts/%@/1/%@/%@/%@", post[@"title"], post[@"content"], post[@"category"], self.userID];
 
     [self.sessionManager POST:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject isEqualToString:FailMessage]) {
